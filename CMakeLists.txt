@@ -21,6 +21,7 @@ add_subdirectory(source_bin)
 # Add catch target
 add_library(Catch INTERFACE)
 target_include_directories(Catch INTERFACE test/external/catch2)
+target_compile_features(Catch INTERFACE cxx_std_11)
 
 # Enable test
 enable_testing()
