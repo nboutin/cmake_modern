@@ -46,13 +46,17 @@ matrix:
         env: NAME="Clang"
         addons:
          apt:
-          sources: llvm-toolchain-trusty-5.0
-          packages: clang-5.0
+          sources: 
+           - llvm-toolchain-trusty-5.0
+           - llvm-toolchain-trusty-6.0
+          packages: 
+           - clang-5.0
+           - clang-6.0
         script:
-         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
-         - cmake --build release -- -j 8
-         - cmake --build release --target test
+         - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
+         - cmake --build clang5 -- -j 8
+         - cmake --build clang5 --target test
          -
-         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="clang++-5.0"
-         - cmake --build debug -- -j 8
-         - cmake --build debug --target test
+         - cmake -H. -Bclang6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-6.0"
+         - cmake --build clang6 -- -j 8
+         - cmake --build clang6 --target test
