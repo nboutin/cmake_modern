@@ -21,7 +21,7 @@ if(ENABLE_CLANG_TIDY)
 	)
 
 	add_custom_target(
-	    tidy
+	    clang-tidy
 	    COMMAND ${RUN_CLANG_TIDY_BIN} ${RUN_CLANG_TIDY_BIN_ARGS}
 	    COMMENT "running clang tidy"
 	)

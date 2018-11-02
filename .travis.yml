@@ -83,6 +83,6 @@ matrix:
          apt:
           source: llvm-toolchain-trusty-6.0
           packages: clang-tidy-6.0
-          script: 
-           - cmake -H. -Bbuild -DENABLE_CLANG_TIDY=ON
-           - cmake --build build --target tidy
+        script: 
+         - cmake -H. -Bbuild -DENABLE_CLANG_TIDY=ON
+         - cmake --build build --target clang-tidy
