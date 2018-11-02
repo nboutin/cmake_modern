@@ -1,7 +1,7 @@
 if(ENABLE_CPPCHECK)
 	include(ExternalProject)
 	find_package(Git REQUIRED)
-	
+
 	ExternalProject_Add(
 	    cppcheck
 	    GIT_REPOSITORY      https://github.com/danmar/cppcheck.git
@@ -15,7 +15,7 @@ if(ENABLE_CPPCHECK)
 	    SOURCE_DIR          ${CMAKE_BINARY_DIR}/external/cppcheck/src
 	    BINARY_DIR          ${CMAKE_BINARY_DIR}/external/cppcheck/build
 	)
-	
+
 	list(APPEND CPPCHECK_ARGS
 	    --enable=warning,style,performance,portability,unusedFunction
 	    --std=c++11
@@ -26,7 +26,7 @@ if(ENABLE_CPPCHECK)
 	    -I ${CMAKE_SOURCE_DIR}/source_bin/*
 	    -I ${CMAKE_SOURCE_DIR}/test/src/*
 	)
-	
+
 	add_custom_target(
 	    check
 	    COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS}
