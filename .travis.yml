@@ -65,7 +65,15 @@ matrix:
           sources:
            - ubuntu-toolchain-r-test
           packages:
+           - g++-5
+           - g++-6
            - g++-7
         script:
-         - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-         - cmake --build build -- -j 8
+         - cmake -H. -Bbuild5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-5"
+         - cmake --build build5 -- -j 8
+         -
+         - cmake -H. -Bbuild6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
+         - cmake --build build6 -- -j 8
+         -
+         - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
+         - cmake --build build7 -- -j 8
