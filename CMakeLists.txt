@@ -39,3 +39,7 @@ add_executable(test_factorial
 	test/src/test_factorial.cpp)
 target_link_libraries(test_factorial PRIVATE Catch)
 add_test(NAME test_factorial COMMAND test_factorial)
+
+##### Code Analysis
+
+include(cmake/cppcheck.cmake)

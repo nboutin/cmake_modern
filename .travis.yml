@@ -13,10 +13,9 @@ matrix:
    include:
       - os: linux
         env: NAME="Config"
-        addons:
-         apt:
-          packages:
-           - ninja-build
+        addons: 
+         apt: 
+          packages: ninja-build
         script: 
          - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
          - cmake --build release -- -j 8
@@ -37,3 +36,10 @@ matrix:
            git diff --check HEAD^
            exit -1
          fi
+      - os: linux
+        env: NAME"CppCheck"
+        script:
+         - cmake -H. -B.build
+         - cmake --build build -- -j 8
+         - cmake --build build --target check
+
