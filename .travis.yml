@@ -55,8 +55,29 @@ matrix:
         script:
          - cmake -H. -Bclang4 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-4.0"
          - cmake --build clang4 -- -j 8
-         - cmake --build clang4 --target test
          -
          - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
          - cmake --build clang5 -- -j 8
-         - cmake --build clang5 --target test
+      - os: linux
+        env: NAME="G++"
+        addons:
+         apt:
+          sources:
+           - ubuntu-toolchain-r-test
+          packages:
+           - g++4.9
+           - g++5
+           - g++6
+           - g++7
+         script:
+          - cmake -H. -Bgcc4.9 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++4.9"
+          - cmake --build gcc4.9 -- -j 8
+          -
+          - cmake -H. -Bgcc5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++5"
+          - cmake --build gcc5 -- -j 8
+          -
+          - cmake -H. -Bgcc6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++6"
+          - cmake --build gcc6 -- -j 8
+          -
+          - cmake -H. -Bgcc7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++7"
+          - cmake --build gcc7 -- -j 8
