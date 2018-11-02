@@ -9,10 +9,6 @@ notifications:
       on_success: change
       on_failure: always
 
-compiler:
-   - gcc
-   - clang
-
 matrix:
    include:
       - os: linux
@@ -46,3 +42,17 @@ matrix:
          - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
          - cmake --build build -- -j 8
          - cmake --build build --target check
+      - os: linux
+        env: NAME="Clang"
+        addons:
+         apt:
+          source: llvm-toolchain-trusty-6.0
+          packages: clang-6.0
+        script:
+         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang-6.0"
+         - cmake --build release -- -j 8
+         - cmake --build release --target test
+         - 
+         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="clang-6.0"
+         - cmake --build debug -- -j 8
+         - cmake --build debug --target test
