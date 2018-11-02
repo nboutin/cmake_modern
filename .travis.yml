@@ -79,5 +79,14 @@ matrix:
 #          - cmake -H. -Bgcc6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
 #          - cmake --build gcc6 -- -j 8
 #          -
-          - cmake -H. -Bgcc7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-          - cmake --build gcc7 -- -j 8
+           - cmake -H. -Bgcc7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
+           - cmake --build gcc7 -- -j 8
+      - os: linux
+        env: NAME="clang-tidy"
+        addons:
+         apt:
+          source: llvm-toolchain-trusty-6.0
+          packages: clang-tidy-6.0
+          script: 
+           - cmake -H. -Bbuild -DENABLE_CLANG_TIDY=ON
+           - cmake --build build --target tidy

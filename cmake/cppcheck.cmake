@@ -22,6 +22,7 @@ if(ENABLE_CPPCHECK)
 	    --verbose
 	    --error-exitcode=1
 	    --language=c++
+	    --template="[{severity}][{id}] {message} {callstack} \(On {file}:{line}\)"
 	    -DMAIN=main
 	    -I ${CMAKE_SOURCE_DIR}/source_bin/*
 	    -I ${CMAKE_SOURCE_DIR}/test/src/*
