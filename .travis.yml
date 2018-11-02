@@ -39,7 +39,7 @@ matrix:
       - os: linux
         env: NAME="CppCheck"
         script:
-         - cmake -H. -Bbuild
+         - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
          - cmake --build build -- -j 8
          - cmake --build build --target check
 
