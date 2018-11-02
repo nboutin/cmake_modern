@@ -1,0 +1,20 @@
+language: cpp
+dist: trusty
+os: linux
+
+notifications:
+   email:
+      recipients:     
+         - boutwork@gmail.com 
+      on_success: change
+      on_failure: always
+
+
+matrix:
+   include:
+      - os: linux
+        env: TEST="Config"
+        script: 
+         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release && cmake --build release && cmake -- build release --target test
+         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug && cmake --build debug && cmake --build debug --target test
+         - cmake -H. -Bninja -GNinja && cmake --build ninja && cmake --build ninja --target test
