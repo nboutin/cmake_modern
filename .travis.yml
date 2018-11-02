@@ -9,16 +9,14 @@ notifications:
       on_success: change
       on_failure: always
       
-addons:
-   apt:
-      packages:
-      - ninja-build
-
-
 matrix:
    include:
       - os: linux
         env: NAME="Config"
+        addons:
+         apt:
+          packages:
+           - ninja-build
         script: 
          - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
          - cmake --build release -- -j 8
