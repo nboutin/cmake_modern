@@ -4,11 +4,15 @@ os: linux
 
 notifications:
    email:
-      recipients:     
-         - boutwork@gmail.com 
+      recipients:
+         - boutwork@gmail.com
       on_success: change
       on_failure: always
-      
+
+compiler:
+   - gcc
+   - clang
+
 matrix:
    include:
       - os: linux
@@ -42,4 +46,3 @@ matrix:
          - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
          - cmake --build build -- -j 8
          - cmake --build build --target check
-
