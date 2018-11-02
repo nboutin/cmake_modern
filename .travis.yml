@@ -49,10 +49,10 @@ matrix:
           sources: llvm-toolchain-trusty-5.0
           packages: clang-5.0
         script:
-         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang-5.0"
+         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
          - cmake --build release -- -j 8
          - cmake --build release --target test
          -
-         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="clang-5.0"
+         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="clang++-5.0"
          - cmake --build debug -- -j 8
          - cmake --build debug --target test
