@@ -69,7 +69,7 @@ matrix:
 #           - g++-5
 #           - g++-6
            - g++-7
-         script:
+          script:
 #          - cmake -H. -Bgcc4.9 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-4.9"
 #          - cmake --build gcc4.9 -- -j 8
 #          -
