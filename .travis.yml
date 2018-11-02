@@ -46,9 +46,7 @@ matrix:
         env: NAME="Clang"
         addons:
          apt:
-          source:
-           - ubuntu-toolchain-r-test
-           - llvm-toolchain-trusty-5.0
+          sources: llvm-toolchain-trusty-5.0
           packages: clang-5.0
         script:
          - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang-5.0"
