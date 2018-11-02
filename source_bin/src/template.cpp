@@ -1,7 +1,4 @@
 
 #include <iostream>
 
-void test()
-{
-	std::cout << "test";
-}
+void test() { std::cout << "test"; }

@@ -43,3 +43,5 @@ add_test(NAME test_factorial COMMAND test_factorial)
 ##### Code Analysis
 
 include(cmake/cppcheck.cmake)
+include(cmake/clang_format.cmake)
+

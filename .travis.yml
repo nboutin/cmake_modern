@@ -77,3 +77,14 @@ matrix:
          -
          - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
          - cmake --build build7 -- -j 8
+      - os: linux
+        env: NAME="clang-format"
+        addons:
+         apt:
+          sources: llvm-toolchain-trusty-6.0
+          packages: clang-format-6.0
+        script: 
+         - cmake -H. -Bbuild -DENABLE_CLANG_FORMAT=ON
+         - cmake --build build --target clang-format
+
+

@@ -1,7 +1,4 @@
 
 #include "template.h"
 
-int main()
-{
-	test();
-}
+int main() { test(); }
