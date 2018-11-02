@@ -7,18 +7,18 @@ I want to centralized all the informations that I have gathered using CMake and 
 # What
 ## Done
 
-1. CMake 
-..* Catch2 unittest
-..* Debug and Release configuration
-..* Make and Ninja build system
+1. CMake
+   - Catch2 unittest
+   - Debug and Release configuration
+   - Make and Ninja build system
 
 2. Travis-CI
-..* Unitttest execution
-..* G++
-..* Clang 4.0, 5.0
-..* Email notification
-..* CppCheck
-..* Check whitespace trailing
+   - Unitttest execution
+   - G++
+   - Clang 4.0, 5.0
+   - Email notification
+   - CppCheck
+   - Check whitespace trailing
 
 ## Future
 * G++5/6/7
@@ -27,3 +27,4 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Google Address Sanitizer
 * Google Undefined Sanitizer
 * Google Thread Sanitizer
+* Badge Github
