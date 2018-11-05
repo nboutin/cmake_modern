@@ -4,6 +4,10 @@ project(comp_name
 	VERSION 0.1.0 
 	LANGUAGES CXX)
 
+##### Compile options
+
+add_compile_options(-Wall -Werror -Wextra -Wpedantic)
+
 ##### Source
 	
 add_subdirectory(source_bin)

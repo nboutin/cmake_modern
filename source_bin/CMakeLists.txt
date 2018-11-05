@@ -3,8 +3,7 @@
 
 add_executable(${PROJECT_NAME}
 	src/main.cpp
-	src/template.cpp)
-
-target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Werror -Wextra -Wpedantic)
+	src/factorial.cpp
+	src/square_root.cpp)
 
 target_include_directories(${PROJECT_NAME} PRIVATE inc)
