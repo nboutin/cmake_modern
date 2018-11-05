@@ -5,10 +5,10 @@ target_include_directories(Catch INTERFACE external/catch2)
 target_compile_features(Catch INTERFACE cxx_std_11)
 
 # Create library for business logic
-add_library(business_logic SHARED 
+add_library(business_logic SHARED
 	${CMAKE_SOURCE_DIR}/source_bin/src/factorial.cpp
 	${CMAKE_SOURCE_DIR}/source_bin/src/square_root.cpp)
-	
+
 target_include_directories(business_logic PUBLIC ${CMAKE_SOURCE_DIR}/source_bin/inc)
 set_target_properties(business_logic PROPERTIES LINKER_LANGUAGE CXX)
 
