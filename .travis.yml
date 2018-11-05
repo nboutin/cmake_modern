@@ -85,4 +85,4 @@ matrix:
    script:
    - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
    - cmake --build build -- -j 8
-   - cmake --build build --target cppcheck
+   - cmake --build build --target cpp-check

@@ -28,5 +28,5 @@ if(ENABLE_CPPCHECK)
 #	    -I ${CMAKE_SOURCE_DIR}/test/src/*
 )
 
-	add_custom_target(cppcheck COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
+	add_custom_target(cpp-check COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
 endif()
