@@ -24,7 +24,7 @@ if(ENABLE_CPPCHECK)
 	    --language=c++
 	    -DMAIN=main
 	    -I ${CMAKE_SOURCE_DIR}/source_bin/*
-	    -I ${CMAKE_SOURCE_DIR}/test/src/*
+#	    -I ${CMAKE_SOURCE_DIR}/test/src/*
 	)
 
 	add_custom_target(
