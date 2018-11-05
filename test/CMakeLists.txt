@@ -4,15 +4,13 @@ add_library(Catch INTERFACE)
 target_include_directories(Catch INTERFACE external/catch2)
 target_compile_features(Catch INTERFACE cxx_std_11)
 
-# Add test
-add_executable(test_sqrt 
-	src/main.cpp
-	src/test_sqrt.cpp)
-target_link_libraries(test_sqrt PRIVATE Catch)
-add_test(NAME test_sqrt COMMAND test_sqrt)
+# arg: name test
+function(make_test arg)
+	add_executable(test_${arg} src/main.cpp src/test_${arg}.cpp)
+	target_link_libraries(test_${arg} PRIVATE Catch)
+	add_test(NAME test_${arg} COMMAND test_${arg})
+endfunction()
 
-add_executable(test_factorial
-	src/main.cpp
-	src/test_factorial.cpp)
-target_link_libraries(test_factorial PRIVATE Catch)
-add_test(NAME test_factorial COMMAND test_factorial)
+# Add test
+make_test(sqrt)
+make_test(factorial)
