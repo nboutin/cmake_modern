@@ -9,6 +9,9 @@ notifications:
       on_success: change
       on_failure: always
 
+git:
+ depth: false
+
 matrix:
    include:
       - os: linux
