@@ -1,3 +1,4 @@
+
 if(ENABLE_CPPCHECK)
 	include(ExternalProject)
 	find_package(Git REQUIRED)
@@ -24,12 +25,7 @@ if(ENABLE_CPPCHECK)
 	    --language=c++
 	    -DMAIN=main
 	    -I ${CMAKE_SOURCE_DIR}/source_bin/*
-#	    -I ${CMAKE_SOURCE_DIR}/test/src/*
-	)
+#	    -I ${CMAKE_SOURCE_DIR}/test/src/*)
 
-	add_custom_target(
-	    check
-	    COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS}
-	    COMMENT "running cppcheck"
-	)
+	add_custom_target(cppcheck COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
 endif()
