@@ -4,6 +4,10 @@ project(comp_name
 	VERSION 0.1.0 
 	LANGUAGES CXX)
 
+##### Configuration
+
+configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
+
 ##### Compile options
 
 add_compile_options(-Wall -Werror -Wextra -Wpedantic)
