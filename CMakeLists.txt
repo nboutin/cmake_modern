@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.5.0)
-project(comp_name
+project(cmake_modern
 	VERSION 0.2.0
 	LANGUAGES CXX)
 
