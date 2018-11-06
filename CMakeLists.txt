@@ -10,7 +10,7 @@ configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
 
 ##### Compile options
 
-add_compile_options(-Wall -Werror -Wextra -Wpedantic)
+add_compile_options(-Wall -Werror -Wextra -Wpedantic -Weffc++ -Wshadow -Wnon-virtual-dtor)
 
 ##### Source
 
