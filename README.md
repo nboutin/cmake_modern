@@ -1,4 +1,4 @@
-# CMake Modern 0.1.0
+# CMake Modern 0.2.0
 [![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern)
 [![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
 
