@@ -1,6 +1,6 @@
 # CMake Modern 0.2.0
-[![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern)
-[![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
+[![Master Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern)
+[![Develop Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
 
 # Why
 I want to centralized all the informations that I have gathered using CMake and Travis-CI.
@@ -22,6 +22,7 @@ I want to centralized all the informations that I have gathered using CMake and 
    - CppCheck
 
 ## Future
+* code coverage
 * clang-tidy
 * clang-format
 * Google Address Sanitizer
