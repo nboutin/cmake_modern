@@ -12,6 +12,15 @@ add_library(business_logic SHARED
 target_include_directories(business_logic PUBLIC ${CMAKE_SOURCE_DIR}/source_bin/inc)
 set_target_properties(business_logic PROPERTIES LINKER_LANGUAGE CXX)
 
+if(ENABLE_COVERAGE)
+	target_compile_options(business_logic PRIVATE -g -O0 -fprofile-arcs -ftest-coverage --coverage)
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g ")
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O0")
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-arcs")
+#    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -ftest-coverage")
+#    set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} --coverage")
+endif()
+
 # arg: name test
 function(make_test arg)
 	add_executable(test_${arg} src/main.cpp src/test_${arg}.cpp)
