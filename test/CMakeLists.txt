@@ -14,8 +14,13 @@ set_target_properties(business_logic PROPERTIES LINKER_LANGUAGE CXX)
 
 if(ENABLE_COVERAGE)
 	# TODO check that we use build_type = Debug
-	target_compile_options(business_logic PRIVATE -g -O0 -fprofile-arcs -ftest-coverage --coverage)
-	target_link_libraries(business_logic PRIVATE gcov)
+	target_compile_options(business_logic PRIVATE -g -O0 -fprofile-arcs -ftest-coverage)
+	target_link_libraries(business_logic PRIVATE --coverage)
+endif()
+
+if(ENABLE_ASAN)
+	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold -fno-omit-frame-pointer -fsanitize=leak)
+	target_link_libraries(business_logic PRIVATE -fsanitize=address)
 endif()
 
 # arg: name test
