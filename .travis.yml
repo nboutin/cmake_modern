@@ -15,7 +15,7 @@ git:
 matrix:
  include:
  - os: linux
-   env: NAME="Whitespace"
+   env: "Trailing Whitespace"
    script: |
     if [[ -n $(git diff --check HEAD^) ]]; then
       echo "You must remove whitespace before submitting a pull request"
@@ -24,7 +24,7 @@ matrix:
     fi
 
  - os: linux
-   env: NAME="Config"
+   env: "Configuration: Release/Debug and Ninja Generator"
    addons:
     apt:
      packages: ninja-build
@@ -39,7 +39,7 @@ matrix:
    - cmake --build ninja
 
  - os: linux
-   env: NAME="G++"
+   env: "g++-5/6/7"
    addons:
     apt:
      sources: ubuntu-toolchain-r-test
@@ -58,7 +58,7 @@ matrix:
    - cmake --build build7 -- -j 8
 
  - os: linux
-   env: NAME="Clang"
+   env: "clang-4.0/5.0"
    addons:
     apt:
      sources:
@@ -75,7 +75,7 @@ matrix:
    - cmake --build clang5 -- -j 8
 
  - os: linux
-   env: NAME="Test"
+   env: "Test"
    addons:
     apt:
      sources: ubuntu-toolchain-r-test
@@ -86,7 +86,7 @@ matrix:
    - cmake --build build --target test
  
  - os: linux
-   env: NAME="CppCheck"
+   env: "CppCheck"
    script:
    - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
    - cmake --build build -- -j 8
