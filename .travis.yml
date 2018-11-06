@@ -22,7 +22,7 @@ matrix:
       git diff --check HEAD^
       exit -1
     fi
- 
+
  - os: linux
    env: NAME="Config"
    addons:
@@ -37,7 +37,7 @@ matrix:
    -
    - cmake -H. -Bninja -GNinja
    - cmake --build ninja
- 
+
  - os: linux
    env: NAME="G++"
    addons:
@@ -56,7 +56,7 @@ matrix:
    -
    - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
    - cmake --build build7 -- -j 8
- 
+
  - os: linux
    env: NAME="Clang"
    addons:
@@ -73,7 +73,7 @@ matrix:
    -
    - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
    - cmake --build clang5 -- -j 8
- 
+
  - os: linux
    env: NAME="Test"
    addons:
@@ -91,7 +91,7 @@ matrix:
    - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
    - cmake --build build -- -j 8
    - cmake --build build --target cpp-check
- 
+
  - os: linux
    env: "Code coverage"
    addons:
@@ -104,4 +104,3 @@ matrix:
    - cmake --build build --target test
    after_success:
    - bash <(curl -s https://codecov.io/bash)
-
