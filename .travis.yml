@@ -106,12 +106,20 @@ matrix:
    - bash <(curl -s https://codecov.io/bash)
 
  - os: linux
-   env: "Google Address Sanitizer"
+   env: "Google Address/Undefined/Thread Sanitizer"
    addons:
     apt:
      sources: ubuntu-toolchain-r-test
      packages: g++-7
    script:
    - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_ASAN=ON
+   - cmake --build build -- -j 8
+   - cmake --build build --target test
+   -
+   - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_USAN=ON
+   - cmake --build build -- -j 8
+   - cmake --build build --target test
+   -
+   - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_TSAN=ON
    - cmake --build build -- -j 8
    - cmake --build build --target test

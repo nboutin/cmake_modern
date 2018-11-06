@@ -23,6 +23,16 @@ if(ENABLE_ASAN)
 	target_link_libraries(business_logic PRIVATE -fsanitize=address)
 endif()
 
+if(ENABLE_USAN)
+	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold)
+	target_link_libraries(business_logic PRIVATE -fsanitize=undefined)
+endif()
+
+if(ENABLE_TSAN)
+	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold)
+	target_link_libraries(business_logic PRIVATE -fsanitize=thread)
+endif()
+
 # arg: name test
 function(make_test arg)
 	add_executable(test_${arg} src/main.cpp src/test_${arg}.cpp)
