@@ -12,6 +12,10 @@ configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
 
 add_compile_options(-Wall -Werror -Wextra -Wpedantic)
 
+if(ENABLE_COVERAGE)
+	add_compile_options(-g -O0 --coverage -fprofile-arcs -ftest-coverage)
+endif()
+
 ##### Source
 
 add_subdirectory(source_bin)
