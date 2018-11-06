@@ -35,6 +35,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Badge Github
 * coveralls.io
 * codecov.io
+* Doxygen
 
 # External Links
 * https://github.com/ainfosec/ci_helloworld
