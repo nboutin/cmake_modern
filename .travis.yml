@@ -3,81 +3,86 @@ dist: trusty
 os: linux
 
 notifications:
-   email:
-      recipients:
-         - boutwork@gmail.com
-      on_success: change
-      on_failure: always
+ email:
+  recipients:
+  - boutwork@gmail.com
+  on_success: change
+  on_failure: always
+
+git:
+ depth: false
 
 matrix:
-   include:
-      - os: linux
-        env: NAME="Config"
-        addons:
-         apt:
-          packages: ninja-build
-        script:
-         - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
-         - cmake --build release -- -j 8
-         - cmake --build release --target test
-         -
-         - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
-         - cmake --build debug -- -j 8
-         - cmake --build debug --target test
-         -
-         - cmake -H. -Bninja -GNinja
-         - cmake --build ninja
-         - cmake --build ninja --target test
-      - os: linux
-        env: NAME="Whitespace"
-        script: |
-         if [[ -n $(git diff --check HEAD^) ]]; then
-           echo "You must remove whitespace before submitting a pull request"
-           git diff --check HEAD^
-           exit -1
-         fi
-      - os: linux
-        env: NAME="CppCheck"
-        script:
-         - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
-         - cmake --build build -- -j 8
-         - cmake --build build --target check
-      - os: linux
-        env: NAME="Clang"
-        addons:
-         apt:
-          sources:
-           - llvm-toolchain-trusty-4.0
-           - llvm-toolchain-trusty-5.0
-          packages:
-           - clang-4.0
-           - clang-5.0
-        script:
-         - cmake -H. -Bclang4 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-4.0"
-         - cmake --build clang4 -- -j 8
-         -
-         - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
-         - cmake --build clang5 -- -j 8
-      - os: linux
-        env: NAME="G++"
-        addons:
-         apt:
-          sources:
-           - ubuntu-toolchain-r-test
-          packages:
-#           - g++-4.9
-#           - g++-5
-#           - g++-6
-           - g++-7
-          script:
-#          - cmake -H. -Bgcc4.9 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-4.9"
-#          - cmake --build gcc4.9 -- -j 8
-#          -
-#          - cmake -H. -Bgcc5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-5"
-#          - cmake --build gcc5 -- -j 8
-#          -
-#          - cmake -H. -Bgcc6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
-#          - cmake --build gcc6 -- -j 8
-#          -
-          - cmake -H. -Bgcc7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-          - cmake --build gcc7 -- -j 8
+ include:
+ - os: linux
+   env: NAME="Whitespace"
+   script: |
+    if [[ -n $(git diff --check HEAD^) ]]; then
+      echo "You must remove whitespace before submitting a pull request"
+      git diff --check HEAD^
+      exit -1
+    fi
+ - os: linux
+   env: NAME="Config"
+   addons:
+    apt:
+     packages: ninja-build
+   script:
+   - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
+   - cmake --build release -- -j 8
+   -
+   - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
+   - cmake --build debug -- -j 8
+   -
+   - cmake -H. -Bninja -GNinja
+   - cmake --build ninja
+ - os: linux
+   env: NAME="G++"
+   addons:
+    apt:
+     sources: ubuntu-toolchain-r-test
+     packages:
+     - g++-5
+     - g++-6
+     - g++-7
+   script:
+   - cmake -H. -Bbuild5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-5"
+   - cmake --build build5 -- -j 8
+   -
+   - cmake -H. -Bbuild6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
+   - cmake --build build6 -- -j 8
+   -
+   - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
+   - cmake --build build7 -- -j 8
+ - os: linux
+   env: NAME="Clang"
+   addons:
+    apt:
+     sources:
+     - llvm-toolchain-trusty-4.0
+     - llvm-toolchain-trusty-5.0
+     packages:
+     - clang-4.0
+     - clang-5.0
+   script:
+   - cmake -H. -Bclang4 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-4.0"
+   - cmake --build clang4 -- -j 8
+   -
+   - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
+   - cmake --build clang5 -- -j 8
+ - os: linux
+   env: NAME="Test"
+   addons:
+    apt:
+     sources: ubuntu-toolchain-r-test
+     packages: g++-7
+   script:
+   - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
+   - cmake --build build -- -j 8
+   - cmake --build build --target test
+ - os: linux
+   env: NAME="CppCheck"
+   script:
+   - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
+   - cmake --build build -- -j 8
+   - cmake --build build --target cpp-check
