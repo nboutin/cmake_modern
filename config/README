@@ -1,8 +1,9 @@
 # CMake Modern @PROJECT_VERSION@
-[![Master Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern)
-[![Develop Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
-[![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/master/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern)
-[![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/develop/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern)
+
+Category | Master | Develop
+--- | --- | ---
+**Build status** | [![Master Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern) | [![Develop Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
+**Code coverage** | [![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/master/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern) | [![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/develop/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern)
 
 # Why
 I want to centralized all the informations that I have gathered using CMake and Travis-CI.
