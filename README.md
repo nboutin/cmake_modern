@@ -39,6 +39,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * coveralls.io
 * codecov.io
 * Doxygen
+* cmake-generator-expression
 
 # External Links
 * https://github.com/ainfosec/ci_helloworld
