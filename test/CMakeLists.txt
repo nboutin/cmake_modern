@@ -19,18 +19,18 @@ if(ENABLE_COVERAGE)
 endif()
 
 if(ENABLE_ASAN)
-	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold -fno-omit-frame-pointer -fsanitize=leak)
-	target_link_libraries(business_logic PRIVATE -fsanitize=address)
+	target_compile_options(business_logic PRIVATE -g -O1 -fno-omit-frame-pointer -fsanitize=leak)
+	target_link_libraries(business_logic PRIVATE -fsanitize=address -fuse-ld=gold)
 endif()
 
 if(ENABLE_USAN)
-	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold)
-	target_link_libraries(business_logic PRIVATE -fsanitize=undefined)
+	target_compile_options(business_logic PRIVATE -g -O1)
+	target_link_libraries(business_logic PRIVATE -fsanitize=undefined -fuse-ld=gold)
 endif()
 
 if(ENABLE_TSAN)
-	target_compile_options(business_logic PRIVATE -g -O1 -fuse-ld=gold)
-	target_link_libraries(business_logic PRIVATE -fsanitize=thread)
+	target_compile_options(business_logic PRIVATE -g -O1)
+	target_link_libraries(business_logic PRIVATE -fsanitize=thread -fuse-ld=gold)
 endif()
 
 # arg: name test
