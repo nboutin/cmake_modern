@@ -112,14 +112,14 @@ matrix:
      sources: ubuntu-toolchain-r-test
      packages: g++-7
    script:
-   - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_ASAN=ON
-   - cmake --build build -- -j 8
-   - cmake --build build --target test
+   - cmake -H. -Basan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_ASAN=ON
+   - cmake --build asan -- -j 8
+   - cmake --build asan --target test
    -
-   - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_USAN=ON
-   - cmake --build build -- -j 8
-   - cmake --build build --target test
+   - cmake -H. -Busan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_USAN=ON
+   - cmake --build usan -- -j 8
+   - cmake --build usan --target test
    -
-   - cmake -H. -Bbuild -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_TSAN=ON
-   - cmake --build build -- -j 8
-   - cmake --build build --target test
+   - cmake -H. -Btsan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_TSAN=ON
+   - cmake --build tsan -- -j 8
+   - cmake --build tsan --target test
