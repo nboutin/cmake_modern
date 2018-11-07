@@ -109,3 +109,22 @@ matrix:
    - cmake --build build --target test
    after_success:
    - bash <(curl -s https://codecov.io/bash)
+
+ - os: linux
+   env: "Google Address/Undefined/Thread Sanitizer"
+   addons:
+    apt:
+     sources: ubuntu-toolchain-r-test
+     packages: g++-7
+   script:
+   - cmake -H. -Basan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_ASAN=ON
+   - cmake --build asan -- -j 8
+   - cmake --build asan --target test
+   -
+   - cmake -H. -Busan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_USAN=ON
+   - cmake --build usan -- -j 8
+   - cmake --build usan --target test
+   -
+   - cmake -H. -Btsan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_TSAN=ON
+   - cmake --build tsan -- -j 8
+   - cmake --build tsan --target test
