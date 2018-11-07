@@ -1,7 +1,7 @@
 language: cpp
 dist: trusty
 os: linux
-sudo: false   # should speedup build
+#sudo: false   # should speedup build
 
 env:
   global:
