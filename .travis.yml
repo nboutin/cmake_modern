@@ -1,6 +1,11 @@
 language: cpp
 dist: trusty
 os: linux
+sudo: false   # should speedup build
+
+env:
+  global:
+    - MAKEFLAGS="-j 3"
 
 notifications:
  email:
@@ -30,10 +35,10 @@ matrix:
      packages: ninja-build
    script:
    - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
-   - cmake --build release -- -j 8
+   - cmake --build release
    -
    - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
-   - cmake --build debug -- -j 8
+   - cmake --build debug
    -
    - cmake -H. -Bninja -GNinja
    - cmake --build ninja
@@ -49,13 +54,13 @@ matrix:
      - g++-7
    script:
    - cmake -H. -Bbuild5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-5"
-   - cmake --build build5 -- -j 8
+   - cmake --build build5
    -
    - cmake -H. -Bbuild6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
-   - cmake --build build6 -- -j 8
+   - cmake --build build6
    -
    - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-   - cmake --build build7 -- -j 8
+   - cmake --build build7
 
  - os: linux
    env: "clang-4.0/5.0"
@@ -69,10 +74,10 @@ matrix:
      - clang-5.0
    script:
    - cmake -H. -Bclang4 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-4.0"
-   - cmake --build clang4 -- -j 8
+   - cmake --build clang4
    -
    - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
-   - cmake --build clang5 -- -j 8
+   - cmake --build clang5
 
  - os: linux
    env: "Test"
@@ -82,14 +87,14 @@ matrix:
      packages: g++-7
    script:
    - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-   - cmake --build build -- -j 8
+   - cmake --build build
    - cmake --build build --target test
  
  - os: linux
    env: "CppCheck"
    script:
    - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
-   - cmake --build build -- -j 8
+   - cmake --build build
    - cmake --build build --target cpp-check
 
  - os: linux
@@ -100,7 +105,7 @@ matrix:
      packages: g++-7
    script:
    - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_COVERAGE=ON
-   - cmake --build build -- -j 8
+   - cmake --build build
    - cmake --build build --target test
    after_success:
    - bash <(curl -s https://codecov.io/bash)
