@@ -12,8 +12,9 @@ configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
 
 add_compile_options(-Wall -Werror -Wextra -Wpedantic -Wnon-virtual-dtor -Wshadow -Weffc++ -Wold-style-cast)
 
+# GCC Only: -Wnoexcept -Wlogical-op
 add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2
-	-Winit-self -Wmissing-declarations -Wmissing-include-dirs -Wnoexcept
+	-Winit-self -Wmissing-declarations -Wmissing-include-dirs 
 	-Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo -Wstrict-null-sentinel
 	-Wswitch-default -Wundef -Wno-unused -Wfatal-errors -Wzero-as-null-pointer-constant -Wuseless-cast)
 
