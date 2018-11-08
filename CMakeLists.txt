@@ -1,7 +1,7 @@
 
 cmake_minimum_required(VERSION 3.5.0)
 project(cmake_modern
-	VERSION 0.3.0
+	VERSION 0.3.1
 	LANGUAGES CXX)
 
 ##### Configuration
