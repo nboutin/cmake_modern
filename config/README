@@ -1,5 +1,6 @@
-# CMake Modern @PROJECT_VERSION@
+# CMake Modern
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![version](https://img.shields.io/badge/version-@PROJECT_VERSION@-blue.svg)
 
 Category | Master | Develop
 --- | --- | ---
@@ -45,3 +46,4 @@ I want to centralized all the informations that I have gathered using CMake and 
 
 # External Links
 * https://github.com/ainfosec/ci_helloworld
+* https://shields.io/#/
