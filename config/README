@@ -1,6 +1,11 @@
-# CMake Modern @PROJECT_VERSION@
-[![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern)
-[![Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
+# CMake Modern
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+![version](https://img.shields.io/badge/version-@PROJECT_VERSION@-blue.svg)
+
+Category | Master | Develop
+--- | --- | ---
+**Build status** | [![Master Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=master)](https://travis-ci.com/nboutin/cmake_modern) | [![Develop Build Status](https://travis-ci.com/nboutin/cmake_modern.svg?branch=develop)](https://travis-ci.com/nboutin/cmake_modern)
+**Code coverage** | [![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/master/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern) | [![codecov](https://codecov.io/gh/nboutin/cmake_modern/branch/develop/graph/badge.svg)](https://codecov.io/gh/nboutin/cmake_modern)
 
 # Why
 I want to centralized all the informations that I have gathered using CMake and Travis-CI.
@@ -12,6 +17,7 @@ I want to centralized all the informations that I have gathered using CMake and 
    - Catch2 unittest
    - Debug and Release configuration
    - Make and Ninja build system
+   - GCC Warnings
 
 2. Travis-CI
    - Email notification
@@ -20,11 +26,24 @@ I want to centralized all the informations that I have gathered using CMake and 
    - Clang 4.0, 5.0
    - Unitttest execution
    - CppCheck
+   - code coverage
+   - Google Address Sanitizer
+   - Google Undefined Sanitizer
+   - Google Thread Sanitizer
+
+3. Tools
+   - travis-ci.com
 
 ## Future
 * clang-tidy
 * clang-format
-* Google Address Sanitizer
-* Google Undefined Sanitizer
-* Google Thread Sanitizer
 * Badge Github
+* coveralls.io
+* codecov.io
+* Doxygen
+* cmake-generator-expression
+* Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
+
+# External Links
+* https://github.com/ainfosec/ci_helloworld
+* https://shields.io/#/
