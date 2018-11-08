@@ -1,6 +1,6 @@
 # CMake Modern
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![version](https://img.shields.io/badge/version-0.3.0-blue.svg)
+![version](https://img.shields.io/badge/version-0.3.1-blue.svg)
 
 Category | Master | Develop
 --- | --- | ---
