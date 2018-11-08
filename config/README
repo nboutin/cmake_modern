@@ -40,6 +40,8 @@ I want to centralized all the informations that I have gathered using CMake and 
 * codecov.io
 * Doxygen
 * cmake-generator-expression
+* Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
+* GCC Warnings
 
 # External Links
 * https://github.com/ainfosec/ci_helloworld
