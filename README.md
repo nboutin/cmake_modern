@@ -17,6 +17,7 @@ I want to centralized all the informations that I have gathered using CMake and 
    - Catch2 unittest
    - Debug and Release configuration
    - Make and Ninja build system
+   - GCC Warnings
 
 2. Travis-CI
    - Email notification
@@ -25,24 +26,23 @@ I want to centralized all the informations that I have gathered using CMake and 
    - Clang 4.0, 5.0
    - Unitttest execution
    - CppCheck
+   - code coverage
+   - Google Address Sanitizer
+   - Google Undefined Sanitizer
+   - Google Thread Sanitizer
 
 3. Tools
    - travis-ci.com
 
 ## Future
-* code coverage
 * clang-tidy
 * clang-format
-* Google Address Sanitizer
-* Google Undefined Sanitizer
-* Google Thread Sanitizer
 * Badge Github
 * coveralls.io
 * codecov.io
 * Doxygen
 * cmake-generator-expression
 * Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
-* GCC Warnings
 
 # External Links
 * https://github.com/ainfosec/ci_helloworld
