@@ -1,6 +1,7 @@
 # CMake Modern
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 ![version](https://img.shields.io/badge/version-0.3.1-blue.svg)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/nboutin/cmake_modern.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nboutin/cmake_modern/alerts/)
 
 Category | Master | Develop
 --- | --- | ---
@@ -45,5 +46,11 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
 
 # External Links
-* https://github.com/ainfosec/ci_helloworld
+## Tools
+* https://travis-ci.com/
+* https://codecov.io
 * https://shields.io/#/
+* https://lgtm.com/
+
+## Example
+* https://github.com/ainfosec/ci_helloworld
