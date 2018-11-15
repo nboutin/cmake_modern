@@ -44,6 +44,8 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Doxygen
 * cmake-generator-expression
 * Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
+* cmake-format
+* Valgrind
 
 # External Links
 ## Tools
