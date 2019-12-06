@@ -13,6 +13,10 @@ All notable changes to this project will be documented in this file.
 - LGTM badge
 - Pkgconfig usage
 
+### Fix
+
+- Disable tests for TSAN build
+
 ## [0.3.1] - 2018-11-28
 
 ## [0.3.0] - 2018-11-08
