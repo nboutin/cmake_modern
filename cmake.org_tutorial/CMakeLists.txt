@@ -14,8 +14,6 @@ add_executable(tutorial main_tutorial.cpp)
 target_compile_features(tutorial PRIVATE cxx_std_11)
 
 target_include_directories(tutorial PUBLIC
-	${PROJECT_BINARY_DIR}
-	${PROJECT_SOURCE_DIR}/math_library)
+	${PROJECT_BINARY_DIR})
 	
 target_link_libraries(tutorial PUBLIC math_library)
-	
