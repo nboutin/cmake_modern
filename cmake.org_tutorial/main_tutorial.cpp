@@ -1,5 +1,6 @@
 #include <iostream>
-#include <cmath>
+
+#include "math_library.h"
 
 #include "version.h"
 
@@ -14,7 +15,7 @@ int main(int argc, char **argv) {
 	}
 
 	const double input = std::stod(argv[1]);
-	auto res = std::sqrt(input);
+	auto res = math_sqrt(input);
 	std::cout << "sqrt(" << input << ") = " << res << std::endl;
 	return EXIT_SUCCESS;
 }

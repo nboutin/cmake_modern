@@ -52,6 +52,11 @@ Generate build system and build executable
     $ cd cmake.org_tutorial
     $ cmake -H. -Bbuild
     $ cmake --build build
+    
+Use *ccmake* to configure option
+
+    # option(<variable> "<help_text>" [value])
+    option(USE_MYMATH "Use tutorial provided math implementation" ON)
 
 
 # External Links
