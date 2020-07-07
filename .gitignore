@@ -1,2 +1,7 @@
+# Folders
 build/
-.clang-format
+
+# Eclipse project
+.settings/
+.project
+.cproject
