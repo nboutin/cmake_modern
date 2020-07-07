@@ -45,6 +45,15 @@ I want to centralized all the informations that I have gathered using CMake and 
 * cmake-generator-expression
 * Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
 
+# How-To
+
+Generate build system and build executable
+
+    $ cd cmake.org_tutorial
+    $ cmake -H. -Bbuild
+    $ cmake --build build
+
+
 # External Links
 ## Tools
 * https://travis-ci.com/
