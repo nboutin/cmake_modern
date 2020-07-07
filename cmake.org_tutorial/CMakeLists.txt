@@ -17,3 +17,6 @@ target_include_directories(tutorial PUBLIC
 	${PROJECT_BINARY_DIR})
 	
 target_link_libraries(tutorial PUBLIC math_library)
+
+install(TARGETS tutorial DESTINATION bin)
+install(FILES ${PROJECT_BINARY_DIR}/version.h DESTINATION include)
