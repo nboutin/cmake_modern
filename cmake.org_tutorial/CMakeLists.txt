@@ -25,7 +25,7 @@ install(FILES ${PROJECT_BINARY_DIR}/version.h DESTINATION include)
 
 ##### Test
 
-enable_testing()
+include(CTest)	# call enable_testing()
 
 # Test that the application runs, no segfault or crashes and return 0
 add_test(NAME runs COMMAND tutorial 25)

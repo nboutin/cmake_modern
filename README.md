@@ -36,6 +36,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 
 ## Future
 * cmake ctest dashboard
+* cmake compiler files for stm32
 * clang-tidy
 * clang-format
 * coveralls.io
@@ -82,6 +83,33 @@ Use **--prefix** option to overwrite `CMAKE_INSTALL_PREFIX` default value
 
     $ cmake --install build --prefix install
 
+## Target
+List available target
+
+    $ cmake --build build --target help
+    The following are some of the valid targets for this Makefile:
+    ... all (the default if no target is provided)
+    ... clean
+    ... install
+    ... package
+    ... package_source
+    ... test
+    ... Continuous
+    ... Experimental
+    ... ExperimentalBuild
+    ... ExperimentalConfigure
+    ... ExperimentalCoverage
+    ... ExperimentalMemCheck
+    ... ExperimentalStart
+    ... ExperimentalSubmit
+    ... ExperimentalTest
+    ... ExperimentalUpdate
+    ... Nightly
+    ... make_table
+    ... math_library
+    ... tutorial
+    
+
 ## Test
 Run test
 
@@ -90,6 +118,10 @@ Run test
 ## Package
 
     $ cmake --build build --target package
+
+## Dashboard
+
+    $ cmake --build build --target Experimental
 
 # External Links
 ## Doc
