@@ -6,7 +6,7 @@ project(cmake_modern
 
 ##### Configuration
 
-configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
+configure_file(config/package.json.in ${CMAKE_SOURCE_DIR}/package.json)
 
 ##### Compile options
 

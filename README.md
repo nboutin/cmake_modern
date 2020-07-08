@@ -1,6 +1,6 @@
 # CMake Modern
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-![version](https://img.shields.io/badge/version-0.4.0-blue.svg)
+![version](https://img.shields.io/badge/dynamic/json?label=version&query=version&url=https%3A%2F%2Fraw.githubusercontent.com%2Fnboutin%2Fcmake_modern%2Fmaster%2Fpackage.json)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/nboutin/cmake_modern.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/nboutin/cmake_modern/alerts/)
 
 Category | Master | Develop
@@ -32,11 +32,12 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Google Thread Sanitizer
 
 ### Github
-* Badges
+* Dynamic badges (for version)
 
 ## Future
-* cmake ctest dashboard
+* CTest dashboard
 * cmake compiler files for stm32
+* cmake-packages
 * clang-tidy
 * clang-format
 * coveralls.io
