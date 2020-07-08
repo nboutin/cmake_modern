@@ -87,6 +87,10 @@ Run test
 
     $ cmake --build build --target test
 
+## Package
+
+    $ cmake --build build --target package
+
 # External Links
 ## Doc
 * https://cgold.readthedocs.io/en/latest/overview.html

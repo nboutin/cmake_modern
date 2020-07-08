@@ -43,3 +43,12 @@ endfunction(do_test)
 do_test(tutorial 4 "sqrt 4 equal 2")
 do_test(tutorial 5 "sqrt 5 equal 2.236")
 do_test(tutorial -25 "sqrt -25 equal [-nan|0]")
+
+##### Package
+
+include(InstallRequiredSystemLibraries)
+set(CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE.md")
+set(CPACK_PACKAGE_VERSION_MAJOR "${tutorial_VERSION_MAJOR}")
+set(CPACK_PACKAGE_VERSION_MINOR "${tutorial_VERSION_MINOR}")
+set(CPACK_PACKAGE_VERSION_PATCH "${tutorial_VERSION_PATCH}")
+include(CPack)
