@@ -12,12 +12,16 @@ configure_file(config/README ${CMAKE_SOURCE_DIR}/README.md)
 
 add_compile_options(-Wall -Werror -Wextra -Wpedantic -Wnon-virtual-dtor -Wshadow -Weffc++ -Wold-style-cast)
 
-# GCC Only: -Wnoexcept -Wlogical-op -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wuseless-cast
-
 add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2
 	-Winit-self -Wmissing-declarations -Wmissing-include-dirs
 	-Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo
 	-Wswitch-default -Wundef -Wno-unused -Wfatal-errors)
+
+# GCC Only: -Wnoexcept -Wlogical-op -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wuseless-cast
+# $<COMPILE_LANG_AND_ID:language,compiler_ids>
+# !!! Travis CMake version 3.12 does support this syntax !!!
+#set(gcc_compile_options "$<COMPILE_LANG_AND_ID:CXX,GNU>")
+#add_compile_options("$<${gcc_compile_options}:-Wnoexcept;-Wlogical-op;-Wstrict-null-sentinel;-Wzero-as-null-pointer-constant;-Wuseless-cast>")
 
 ##### Source
 
