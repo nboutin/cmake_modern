@@ -35,6 +35,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Badges
 
 ## Future
+* cmake ctest dashboard
 * clang-tidy
 * clang-format
 * coveralls.io
@@ -80,6 +81,11 @@ Install library and executable
 Use **--prefix** option to overwrite `CMAKE_INSTALL_PREFIX` default value
 
     $ cmake --install build --prefix install
+
+## Test
+Run test
+
+    $ cmake --build build --target test
 
 # External Links
 ## Doc
