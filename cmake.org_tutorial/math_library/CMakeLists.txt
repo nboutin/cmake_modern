@@ -11,9 +11,21 @@ add_library(math_library
 	${CMAKE_CURRENT_BINARY_DIR}/table.h # add dependencie to table.h
 	)
 
-target_include_directories(math_library 
-	INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}
+target_include_directories(math_library
+	INTERFACE
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+	$<INSTALL_INTERFACE:include>
 	PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
 
-install(TARGETS math_library DESTINATION lib)
-install(FILES math_library.h DESTINATION include)
+##### Install
+
+install(TARGETS math_library
+		DESTINATION lib
+		EXPORT math_library_target)
+
+install(FILES math_library.h
+		DESTINATION include)
+
+install(EXPORT math_library_target
+		FILE MathLibraryTargets.cmake
+		DESTINATION lib/cmake/MathLibrary)
