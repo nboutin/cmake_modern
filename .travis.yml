@@ -1,5 +1,5 @@
 language: cpp
-dist: trusty
+dist: bionic
 os: linux
 #sudo: false   # should speedup build
 
@@ -67,8 +67,8 @@ matrix:
    addons:
     apt:
      sources:
-     - llvm-toolchain-trusty-4.0
-     - llvm-toolchain-trusty-5.0
+     - llvm-toolchain-bionic-4.0
+     - llvm-toolchain-bionic-5.0
      packages:
      - clang-4.0
      - clang-5.0

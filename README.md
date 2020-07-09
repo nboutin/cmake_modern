@@ -30,6 +30,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Google Address Sanitizer
 * Google Undefined Sanitizer
 * Google Thread Sanitizer
+* Ubuntu 18.04 Bionic Beaver
 
 ### Github
 * Dynamic badges (for version)
