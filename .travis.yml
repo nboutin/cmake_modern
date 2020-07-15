@@ -34,6 +34,9 @@ matrix:
     apt:
      packages: ninja-build
    script:
+   - cmake -Wdev -WError=dev -H. -Bwarnings
+   - cmake -Wdev -WError=dev --build warnings
+   -
    - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
    - cmake --build release
    -
