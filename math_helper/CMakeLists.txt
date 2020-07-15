@@ -27,6 +27,12 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 ##### Install
 
-install(TARGETS ${PROJECT_NAME} LIBRARY DESTINATION lib)
+include(GNUInstallDirs)
 
-install(FILES inc/add.h DESTINATION include)
+set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER inc/add.h)
+
+# DESTINATION is only need for project-specific needs
+install(TARGETS ${PROJECT_NAME}
+#	LIBRARY DESTINATION lib
+#	PUBLIC_HEADER DESTINATION include
+)

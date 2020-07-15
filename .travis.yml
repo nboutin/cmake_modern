@@ -29,6 +29,14 @@ matrix:
     fi
 
  - os: linux
+   env: "math helper library"
+   script:
+   - cd math_helper
+   - cmake -H. -Bbuild
+   - cmake --build build
+   - cmake --install build --prefix install
+
+ - os: linux
    env: "Configuration: Release/Debug and Ninja Generator"
    addons:
     apt:
