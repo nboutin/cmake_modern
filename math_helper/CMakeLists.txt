@@ -18,7 +18,10 @@ add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-opti
 add_library(${PROJECT_NAME} SHARED
 	src/add.cpp)
 
-target_include_directories(${PROJECT_NAME} PRIVATE inc)
+target_include_directories(${PROJECT_NAME} 
+	PUBLIC 
+	$<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/inc>
+	$<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
 
 set_target_properties(${PROJECT_NAME} PROPERTIES
     VERSION ${PROJECT_VERSION}
