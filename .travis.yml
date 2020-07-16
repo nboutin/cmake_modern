@@ -34,7 +34,7 @@ matrix:
    - cd math_helper
    - cmake -H. -Bbuild
    - cmake --build build
-   - cmake --install build --prefix install
+   - cmake --install build --prefix ../install
 
  - os: linux
    env: "Configuration: Release/Debug and Ninja Generator"
