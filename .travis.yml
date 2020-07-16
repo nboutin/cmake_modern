@@ -47,6 +47,10 @@ matrix:
    - cmake -H. -Bbuild
    - cmake --build build
    - cmake --install build --prefix ../install
+   -
+   - cd ../math_application
+   - cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=../install/lib/cmake
+   - cmake --build build
 
  - os: linux
    env: "Configuration: Release/Debug and Ninja Generator"
