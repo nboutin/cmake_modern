@@ -138,3 +138,6 @@ Run test
 
 ## Example
 * https://github.com/ainfosec/ci_helloworld
+* https://github.com/gujans/travis-gtest-cmake-example/blob/master/.travis.yml
+* https://chromium.googlesource.com/external/github.com/KhronosGroup/Vulkan-Tools/+/refs/heads/master/.travis.yml
+* https://dominikberner.ch/cmake-interface-lib/
