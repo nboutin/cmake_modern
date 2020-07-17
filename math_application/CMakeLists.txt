@@ -20,8 +20,8 @@ add_executable(${PROJECT_NAME}
 
 ##### 3rd party
 
-list(APPEND CMAKE_PREFIX_PATH "../install")
-set(math_helper_DIR ../install/lib/cmake)
+#list(APPEND CMAKE_PREFIX_PATH "../install")
+#set(math_helper_DIR ../install/lib/cmake)
 message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
 
 find_package(math_helper CONFIG REQUIRED)

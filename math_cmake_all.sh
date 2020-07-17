@@ -7,5 +7,5 @@ cmake --build math_helper/build
 cmake --install math_helper/build --prefix install
 
 rm -rf math_application/build
-cmake -Hmath_application -Bmath_application/build
+cmake -Hmath_application -Bmath_application/build -DCMAKE_PREFIX_PATH=../install/lib/cmake
 cmake --build math_application/build
