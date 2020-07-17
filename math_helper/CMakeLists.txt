@@ -34,7 +34,6 @@ set_target_properties(${PROJECT_NAME} PROPERTIES
 
 #set_target_properties(${PROJECT_NAME} PROPERTIES PUBLIC_HEADER inc/add.h)
 
-# DESTINATION is only need for project-specific needs
 install(TARGETS ${PROJECT_NAME}
 		EXPORT ${PROJECT_NAME}Targets
 		LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
@@ -61,9 +60,6 @@ write_basic_package_version_file(
 	VERSION ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
 	COMPATIBILITY AnyNewerVersion)
 
-#export(EXPORT ${PROJECT_NAME}Targets
-#	FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake)
-
 install(
 	EXPORT ${PROJECT_NAME}Targets
 	FILE ${PROJECT_NAME}Targets.cmake
@@ -75,7 +71,3 @@ install(
 		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
 		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake
 	DESTINATION ${CONFIG_PKG_DIR})
-
-#install(
-#	DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/inc
-#	DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
