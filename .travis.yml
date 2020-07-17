@@ -1,12 +1,5 @@
 language: cpp
 dist: bionic
-os: linux
-#sudo: false   # should speedup build
-
-env:
-  global:
-    - MAKEFLAGS="-j 3"
-    - DEPS_DIR=${TRAVIS_BUILD_DIR}/deps
 
 notifications:
  email:
@@ -16,142 +9,98 @@ notifications:
   on_failure: always
 
 git:
- depth: false
+ - strategy: clone
+ - depth: 1
+ 
+env:
+ global:
+  - MAKEFLAGS="-j 3"
+  
+#cache:
+# apt: true # misnommer: does not cache apt packages
+# https://github.com/travis-ci/travis-ci/issues/5876#issuecomment-207661127
 
-install:
- # Download and install recent cmake
- - |
-   if [[ ${TRAVIS_OS_NAME} == "linux" ]]; then
-     CMAKE_URL="http://www.cmake.org/files/v3.18/cmake-3.18.0-Linux-x86_64.tar.gz"
-     mkdir -p ${DEPS_DIR}/cmake
-     travis_retry wget --no-check-certificate --quiet -O - ${CMAKE_URL} | tar --strip-components=1 -xz -C ${DEPS_DIR}/cmake
-     export PATH=${DEPS_DIR}/cmake/bin:${PATH}
-   fi
- - cmake --version
+##### Phases
+# https://docs.travis-ci.com/user/job-lifecycle#the-job-lifecycle
 
-matrix:
+before_install:
+ - eval "${MATRIX_EVAL}"
+ 
+script:
+ - cmake -H. -Bbuild
+ - cmake --build build
+# -
+# - cmake -H. -Bninja -GNinja
+# - cmake --build ninja
+ -
+ - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
+ - cmake --build release
+ -
+ - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
+ - cmake --build debug
+
+##### Stages
+
+stages: # order
+ - build
+ - test
+
+##### Jobs
+
+os:
+ - linux
+# - windows # Add windows as build environnement, create additional jobs
+
+#compiler: # can expand build matrix but without job naming and stage selection
+# - gcc
+# - clang
+ 
+#env: #can expand build matrix
+# - VAR_NAME=value
+
+jobs: # alias matrix
  include:
- - os: linux
-   env: "Trailing Whitespace"
-   script: |
-    if [[ -n $(git diff --check HEAD^) ]]; then
-      echo "You must remove whitespace before submitting a pull request"
-      git diff --check HEAD^
-      exit -1
-    fi
+  - name: "GCC 5"
+    stage: build
+    os: linux
+    env: MATRIX_EVAL="CC=gcc-5 && CXX=g++-5"
+    addons:
+     apt:
+      sources: ubuntu-toolchain-r-test
+      packages: g++-5
 
- - os: linux
-   env: "math helper library"
-   script:
-   - cd math_helper
-   - cmake -H. -Bbuild
-   - cmake --build build
-   - cmake --install build --prefix ../install
-   -
-   - cd ../math_application
-   - cmake -H. -Bbuild -DCMAKE_INSTALL_PREFIX=../install/lib/cmake
-   - cmake --build build
+  - name: "GCC 6"
+    stage: build
+    os: linux
+    env: MATRIX_EVAL="CC=gcc-6 && CXX=g++-6"
+    addons:
+     apt:
+      sources: ubuntu-toolchain-r-test
+      packages: g++-6
 
- - os: linux
-   env: "Configuration: Release/Debug and Ninja Generator"
-   addons:
-    apt:
-     packages: ninja-build
-   script:
-   - cmake -Wdev -WError=dev -H. -Bwarnings
-   - cmake -Wdev -WError=dev --build warnings
-   -
-   - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
-   - cmake --build release
-   -
-   - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
-   - cmake --build debug
-   -
-   - cmake -H. -Bninja -GNinja
-   - cmake --build ninja
+  - name: "GCC 7"
+    stage: build
+    os: linux
+    env: MATRIX_EVAL="CC=gcc-7 && CXX=g++-7"
+    addons:
+     apt:
+      sources: ubuntu-toolchain-r-test
+      packages: g++-7
 
- - os: linux
-   env: "g++-5/6/7"
-   addons:
-    apt:
-     sources: ubuntu-toolchain-r-test
-     packages:
-     - g++-5
-     - g++-6
-     - g++-7
-   script:
-   - cmake -H. -Bbuild5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-5"
-   - cmake --build build5
-   -
-   - cmake -H. -Bbuild6 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-6"
-   - cmake --build build6
-   -
-   - cmake -H. -Bbuild7 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-   - cmake --build build7
+  - name: "Clang 4.0"
+    stage: build
+    os: linux
+    env: MATRIX_EVAL="CC=clang-4.0 && CXX=clang++-4.0"
+    addons:
+     apt:
+      sources: llvm-toolchain-bionic-4.0
+      packages: clang-4.0
 
- - os: linux
-   env: "clang-4.0/5.0"
-   addons:
-    apt:
-     sources:
-     - llvm-toolchain-bionic-4.0
-     - llvm-toolchain-bionic-5.0
-     packages:
-     - clang-4.0
-     - clang-5.0
-   script:
-   - cmake -H. -Bclang4 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-4.0"
-   - cmake --build clang4
-   -
-   - cmake -H. -Bclang5 -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="clang++-5.0"
-   - cmake --build clang5
-
- - os: linux
-   env: "Test"
-   addons:
-    apt:
-     sources: ubuntu-toolchain-r-test
-     packages: g++-7
-   script:
-   - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER="g++-7"
-   - cmake --build build
-   - cmake --build build --target test
-
- - os: linux
-   env: "CppCheck"
-   script:
-   - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
-   - cmake --build build
-   - cmake --build build --target cpp-check
-
- - os: linux
-   env: "Code coverage"
-   addons:
-    apt:
-     sources: ubuntu-toolchain-r-test
-     packages: g++-7
-   script:
-   - cmake -H. -Bbuild -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_COVERAGE=ON
-   - cmake --build build
-   - cmake --build build --target test
-   after_success:
-   - bash <(curl -s https://codecov.io/bash)
-
- - os: linux
-   env: "Google Address/Undefined/Thread Sanitizer"
-   addons:
-    apt:
-     sources: ubuntu-toolchain-r-test
-     packages: g++-7
-   script:
-   - cmake -H. -Basan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_ASAN=ON
-   - cmake --build asan
-   - cmake --build asan --target test
-   -
-   - cmake -H. -Busan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_USAN=ON
-   - cmake --build usan
-   - cmake --build usan --target test
-   -
-   - cmake -H. -Btsan -DCMAKE_CXX_COMPILER="g++-7" -DENABLE_TSAN=ON
-   - cmake --build tsan
-   #- cmake --build tsan --target test
+  - name: "Clang 5.0"
+    stage: build
+    os: linux
+    env: MATRIX_EVAL="CC=clang-5.0 && CXX=clang++-5.0"
+    addons:
+     apt:
+      sources: llvm-toolchain-bionic-5.0
+      packages: clang-5.0
