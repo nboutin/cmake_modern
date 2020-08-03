@@ -72,6 +72,14 @@ os:
 
 jobs: # alias matrix
  include:
+  - name: "Trailing whitespace"
+    script: |
+     if [[ -n $(git diff --check HEAD^) ]]; then
+       echo "You must remove whitespace before submitting a pull request"
+       git diff --check HEAD^
+       exit -1
+     fi
+
   - name: "GCC 5"
     stage: build
     os: linux
