@@ -42,6 +42,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * clang-format
 * coveralls.io
 * codecov.io
+* code-climate
 * Doxygen
 * ccache https://ccache.dev/
 * Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
