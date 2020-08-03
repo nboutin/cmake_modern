@@ -126,3 +126,13 @@ jobs: # alias matrix
      apt:
       sources: llvm-toolchain-bionic-5.0
       packages: clang-5.0
+
+  - name: "Ninja"
+    stage: build
+    os: linux
+    addons:
+     apt:
+      packages: ninja-build
+    script:
+     - cmake -H. -Bninja -GNinja
+     - cmake --build ninja
