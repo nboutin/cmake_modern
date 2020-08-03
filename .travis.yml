@@ -41,9 +41,6 @@ install:
 script:
  - cmake -H. -Bbuild
  - cmake --build build
-# -
-# - cmake -H. -Bninja -GNinja
-# - cmake --build ninja
  -
  - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
  - cmake --build release
