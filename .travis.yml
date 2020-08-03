@@ -54,6 +54,7 @@ script:
 ##### Stages
 
 stages: # order
+ - sanity
  - build
  - test
 
@@ -73,6 +74,7 @@ os:
 jobs: # alias matrix
  include:
   - name: "Trailing whitespace"
+    stage: sanity
     script: |
      if [[ -n $(git diff --check HEAD^) ]]; then
        echo "You must remove whitespace before submitting a pull request"
