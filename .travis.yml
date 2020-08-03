@@ -133,3 +133,11 @@ jobs: # alias matrix
     script:
      - cmake -H. -Bninja -GNinja
      - cmake --build ninja
+
+  - name: "Tests"
+    stage: test
+    os: linux
+    script:
+     - cmake -H. -Bbuild
+     - cmake --build build
+     - cmake --build build --target test
