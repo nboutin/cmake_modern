@@ -1,10 +1,15 @@
 
 cmake_minimum_required(VERSION 3.5)
 project(math_helper
-	VERSION 0.1.0
+	VERSION 0.4.0
 	LANGUAGES CXX)
 
 include(GNUInstallDirs)
+
+##### Configuration
+
+# Configuration file for Github badge version
+configure_file(${CMAKE_SOURCE_DIR}/../config/package.json.in ${CMAKE_SOURCE_DIR}/../package.json)
 
 ##### Compile options
 
@@ -14,6 +19,12 @@ add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-opti
 	-Winit-self -Wmissing-declarations -Wmissing-include-dirs
 	-Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo
 	-Wswitch-default -Wundef -Wno-unused -Wfatal-errors)
+
+# GCC Only: -Wnoexcept -Wlogical-op -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wuseless-cast
+# $<COMPILE_LANG_AND_ID:language,compiler_ids>
+set(gcc_compile_options "$<COMPILE_LANG_AND_ID:CXX,GNU>")
+add_compile_options("$<${gcc_compile_options}:-Wnoexcept;-Wlogical-op;-Wstrict-null-sentinel;-Wzero-as-null-pointer-constant;-Wuseless-cast>")
+
 
 ##### Target
 
@@ -71,3 +82,8 @@ install(
 		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake
 		${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config-version.cmake
 	DESTINATION ${CONFIG_PKG_DIR})
+
+##### Test
+
+include(CTest)	# call enable_testing()
+add_subdirectory(test)

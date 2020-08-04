@@ -39,27 +39,25 @@ install:
  - cmake --version
 
 script:
- - cd math_helper
- - cmake -S . -B build
- - cmake --build build
+ - cmake -S math_helper -B math_helper/build
+ - cmake --build math_helper/build
  -
- - cmake -S . -B release -DCMAKE_BUILD_TYPE=Release
- - cmake --build release
+ - cmake -S math_helper -B math_helper/release -DCMAKE_BUILD_TYPE=Release
+ - cmake --build math_helper/release
  -
- - cmake -S . -B debug -DCMAKE_BUILD_TYPE=Debug
- - cmake --build debug
+ - cmake -S math_helper -B math_helper/debug -DCMAKE_BUILD_TYPE=Debug
+ - cmake --build math_helper/debug
  -
- - cmake --install build --prefix ${DEPS_DIR}/install
+ - cmake --install math_helper/build --prefix ${TRAVIS_BUILD_DIR}/install
  -
- - cd ../math_application
- - cmake -S . -B build -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
- - cmake --build build
+ - cmake -S math_application -B math_application/build -DCMAKE_INSTALL_PREFIX=${TRAVIS_BUILD_DIR}/install/lib/cmake
+ - cmake --build math_application/build
  -
- - cmake -S . -B release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
- - cmake --build release
+ - cmake -S math_application -B math_application/release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${TRAVIS_BUILD_DIR}/install/lib/cmake
+ - cmake --build math_application/release
  -
- - cmake -S . -B debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
- - cmake --build debug
+ - cmake -S math_application -B math_application/debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${TRAVIS_BUILD_DIR}/install/lib/cmake
+ - cmake --build math_application/debug
 
 ##### Stages
 
@@ -144,20 +142,32 @@ jobs: # alias matrix
      apt:
       packages: ninja-build
     script:
-     - cmake -H. -Bninja -GNinja
+     - cmake -S math_helper -B ninja -GNinja
      - cmake --build ninja
 
-  - name: "Tests"
+  - name: "Test lib"
     stage: test
     os: linux
     script:
-     - cmake -H. -Bbuild
+     - cmake -S math_helper -B build
      - cmake --build build
      - cmake --build build --target test
 
-  - name: "cppcheck"
+  - name: "Test appli"
+    stage: test
     os: linux
     script:
-     - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
+     - cmake -S math_helper -B math_helper/build
+     - cmake --build math_helper/build
+     - cmake --install math_helper/build --prefix ${TRAVIS_BUILD_DIR}/install
+     -
+     - cmake -S math_application -B build -DCMAKE_INSTALL_PREFIX=${TRAVIS_BUILD_DIR}/install/lib/cmake
      - cmake --build build
-     - cmake --build build --target cppcheck
+     - cmake --build build --target test
+
+#  - name: "cppcheck"
+#    os: linux
+#    script:
+#     - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
+#     - cmake --build build
+#     - cmake --build build --target cppcheck

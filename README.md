@@ -41,6 +41,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * cmake compiler files for stm32
 * clang-tidy
 * clang-format
+* gprof
 * coveralls.io
 * codecov.io
 * code-climate
