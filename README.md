@@ -18,6 +18,7 @@ I want to centralized all the informations that I have gathered using CMake and 
 * Debug and Release configuration
 * Make and Ninja build system
 * GCC Warnings
+* Update Travis CMake version
 
 ### Travis-CI
 * Email notification
@@ -38,14 +39,13 @@ I want to centralized all the informations that I have gathered using CMake and 
 ## Future
 * CTest dashboard
 * cmake compiler files for stm32
-* cmake-packages
 * clang-tidy
 * clang-format
 * coveralls.io
 * codecov.io
+* code-climate
 * Doxygen
-* cmake-generator-expression
-* Intel Memory Protection Extensions aka IMPX (-fcheck-pointer-bounds -mmpx)
+* ccache https://ccache.dev/
 
 # How-To
 
@@ -127,6 +127,7 @@ Run test
 
 # External Links
 ## Doc
+* https://config.travis-ci.com/explore
 * https://cgold.readthedocs.io/en/latest/overview.html
 * https://gitlab.kitware.com/cmake/community/-/wikis/FAQ
 

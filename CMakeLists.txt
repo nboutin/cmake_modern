@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.18.0)
 project(cmake_modern
 	VERSION 0.4.0
 	LANGUAGES CXX)
@@ -19,9 +19,8 @@ add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-opti
 
 # GCC Only: -Wnoexcept -Wlogical-op -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wuseless-cast
 # $<COMPILE_LANG_AND_ID:language,compiler_ids>
-# !!! Travis CMake version 3.12 does support this syntax !!!
-#set(gcc_compile_options "$<COMPILE_LANG_AND_ID:CXX,GNU>")
-#add_compile_options("$<${gcc_compile_options}:-Wnoexcept;-Wlogical-op;-Wstrict-null-sentinel;-Wzero-as-null-pointer-constant;-Wuseless-cast>")
+set(gcc_compile_options "$<COMPILE_LANG_AND_ID:CXX,GNU>")
+add_compile_options("$<${gcc_compile_options}:-Wnoexcept;-Wlogical-op;-Wstrict-null-sentinel;-Wzero-as-null-pointer-constant;-Wuseless-cast>")
 
 ##### Source
 

@@ -4,7 +4,7 @@ if(ENABLE_CPPCHECK)
 	find_package(Git REQUIRED)
 
 	ExternalProject_Add(
-	    cppcheck
+	    cppcheck_repo
 	    GIT_REPOSITORY      https://github.com/danmar/cppcheck.git
 	    GIT_TAG             1.85
 	    GIT_SHALLOW         1
@@ -28,5 +28,5 @@ if(ENABLE_CPPCHECK)
 #	    -I ${CMAKE_SOURCE_DIR}/test/src/*
 )
 
-	add_custom_target(cpp-check COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
+	add_custom_target(cppcheck COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
 endif()
