@@ -14,7 +14,7 @@ git:
 
 env:
  global:
-  - MAKEFLAGS="-j 3"
+  - MAKEFLAGS="-j"
   - DEPS_DIR=${TRAVIS_BUILD_DIR}/deps
 
 #cache:
@@ -39,13 +39,26 @@ install:
  - cmake --version
 
 script:
- - cmake -H. -Bbuild
+ - cd math_helper
+ - cmake -S . -B build
  - cmake --build build
  -
- - cmake -H. -Brelease -DCMAKE_BUILD_TYPE=Release
+ - cmake -S . -B release -DCMAKE_BUILD_TYPE=Release
  - cmake --build release
  -
- - cmake -H. -Bdebug -DCMAKE_BUILD_TYPE=Debug
+ - cmake -S . -B debug -DCMAKE_BUILD_TYPE=Debug
+ - cmake --build debug
+ -
+ - cmake --install build --prefix ${DEPS_DIR}/install
+ -
+ - cd ../math_application
+ - cmake -S . -B build -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
+ - cmake --build build
+ -
+ - cmake -S . -B release -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
+ - cmake --build release
+ -
+ - cmake -S . -B debug -DCMAKE_BUILD_TYPE=Debug -DCMAKE_INSTALL_PREFIX=${DEPS_DIR}/install/lib/cmake
  - cmake --build debug
 
 ##### Stages
