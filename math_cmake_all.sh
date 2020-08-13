@@ -14,3 +14,8 @@ rm -rf math_application/build
 cmake -Hmath_application -Bmath_application/build -DCMAKE_PREFIX_PATH=../install/lib/cmake
 cmake --build math_application/build
 cmake --build math_application/build --target test
+
+rm -rf build
+cmake -S math_helper -B build -DENABLE_CPPCHECK=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+cmake --build build -j 8
+cmake --build build --target cppcheck

@@ -87,3 +87,7 @@ install(
 
 include(CTest)	# call enable_testing()
 add_subdirectory(test)
+
+##### Code Analysis
+
+include(cmake/cppcheck.cmake)

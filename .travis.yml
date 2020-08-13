@@ -165,9 +165,9 @@ jobs: # alias matrix
      - cmake --build build
      - cmake --build build --target test
 
-#  - name: "cppcheck"
-#    os: linux
-#    script:
-#     - cmake -H. -Bbuild -DENABLE_CPPCHECK=ON
-#     - cmake --build build
-#     - cmake --build build --target cppcheck
+  - name: "cppcheck"
+    os: linux
+    script:
+     - cmake -S math_helper -B build -DENABLE_CPPCHECK=ON -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+     - cmake --build build
+     - cmake --build build --target cppcheck
