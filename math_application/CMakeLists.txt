@@ -1,6 +1,6 @@
 
 cmake_minimum_required(VERSION 3.5.0)
-project(cmake_modern
+project(math_application
 	VERSION 0.1.0
 	LANGUAGES CXX)
 
@@ -13,6 +13,11 @@ add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-opti
 	-Woverloaded-virtual -Wredundant-decls -Wsign-conversion -Wsign-promo
 	-Wswitch-default -Wundef -Wno-unused -Wfatal-errors)
 
+# GCC Only: -Wnoexcept -Wlogical-op -Wstrict-null-sentinel -Wzero-as-null-pointer-constant -Wuseless-cast
+# $<COMPILE_LANG_AND_ID:language,compiler_ids>
+set(gcc_compile_options "$<COMPILE_LANG_AND_ID:CXX,GNU>")
+add_compile_options("$<${gcc_compile_options}:-Wnoexcept;-Wlogical-op;-Wstrict-null-sentinel;-Wzero-as-null-pointer-constant;-Wuseless-cast>")
+
 ##### Target
 
 add_executable(${PROJECT_NAME}
@@ -24,3 +29,8 @@ message(STATUS "CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}")
 
 find_package(math_helper CONFIG REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE math_helper)
+
+##### Test
+
+include(CTest)	# call enable_testing()
+add_subdirectory(test)

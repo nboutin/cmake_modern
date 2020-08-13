@@ -24,8 +24,8 @@ if(ENABLE_CPPCHECK)
 	    --error-exitcode=1
 	    --language=c++
 	    -DMAIN=main
-	    -I ${CMAKE_SOURCE_DIR}/source_bin/*
-#	    -I ${CMAKE_SOURCE_DIR}/test/src/*
+	    -I ${CMAKE_SOURCE_DIR}/math_helper/*
+	    -I ${CMAKE_SOURCE_DIR}/math_application/*
 )
 
 	add_custom_target(cppcheck COMMAND ${CMAKE_BINARY_DIR}/bin/cppcheck ${CPPCHECK_ARGS})
