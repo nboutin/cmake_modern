@@ -13,7 +13,10 @@ configure_file(${CMAKE_SOURCE_DIR}/../config/package.json.in ${CMAKE_SOURCE_DIR}
 
 ##### Compile options
 
-add_compile_options(-Wall -Werror -Wextra -Wpedantic -Wnon-virtual-dtor -Wshadow -Weffc++ -Wold-style-cast)
+add_compile_options(-Wall -Werror -Wextra -Wpedantic -Wshadow )
+
+set(cpp_compile_options "$<COMPILE_LANGUAGE:CPP>")
+add_compile_options("$<${cpp_compile_options}:-Wnon-virtual-dtor -Weffc++ -Wold-style-cast>")
 
 add_compile_options(-Wcast-align -Wcast-qual -Wctor-dtor-privacy -Wdisabled-optimization -Wformat=2
 	-Winit-self -Wmissing-declarations -Wmissing-include-dirs
